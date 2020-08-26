@@ -1,0 +1,46 @@
+$margin: 40px;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $margin;
+  text-align: center;
+  background-color: darkslateblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    > li {
+      margin-left: 20px;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      a {
+        color: white;
+
+        &:hover,
+        &.isActive {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.view {
+  margin-top: $margin;
+  padding: 0.5 * $margin;
+}
