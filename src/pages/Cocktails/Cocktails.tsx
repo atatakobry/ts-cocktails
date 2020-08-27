@@ -1,4 +1,4 @@
-import React, { useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 
 import { API } from '../../services/API';
 
@@ -12,20 +12,20 @@ type TCocktailsFiltersOptions = {
 export const CocktailsContext = createContext<Partial<TCocktailsFiltersOptions>>({});
 
 export const Cocktails = () => {
-  let cocktailsFiltersOptions: TCocktailsFiltersOptions = {
+  const [cocktailsFiltersOptions, setCocktailsFiltersOptions] = useState({
     ingredients: [],
     glasses: [],
-  };
+  });
 
   const fetchFiltersOptions = () => {
-    Promise.all([API.fetchIngredients(), API.fetchGlasses()]).then(([ingredients, glasses]) => {
-      cocktailsFiltersOptions = { ...cocktailsFiltersOptions, ingredients, glasses };
-    });
+    Promise.all([API.fetchIngredients(), API.fetchGlasses()]).then(([ingredients, glasses]) =>
+      setCocktailsFiltersOptions({ ingredients, glasses })
+    );
   };
 
   useEffect(() => {
     fetchFiltersOptions();
-  });
+  }, []);
 
   return (
     <CocktailsContext.Provider value={cocktailsFiltersOptions}>
