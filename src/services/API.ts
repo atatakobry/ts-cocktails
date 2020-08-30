@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { compact, transform } from 'lodash';
 
+import { TFiltersValues } from '../pages/Cocktails/types';
+
 const host = 'the-cocktail-db.p.rapidapi.com';
 const key = '26f7bfa6eemsh64d29e32a9df91ap1ac7f1jsn1ef195db90ed';
 const url = `https://${host}`;
@@ -16,6 +18,11 @@ interface IIngredient {
 }
 interface IGlass {
   strGlass: string;
+}
+interface ICocktail {
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
 }
 
 const fetchIngredients = () => {
@@ -56,7 +63,19 @@ const fetchGlasses = () => {
     );
 };
 
+const fetchCocktails = (filtersValues: TFiltersValues) => {
+  return axios
+    .get(`${url}/filter.php?i=${filtersValues.ingredient}`, {
+      headers: {
+        'x-rapidapi-host': host,
+        'x-rapidapi-key': key,
+      },
+    })
+    .then((response: IResponse<IDrinks<ICocktail>>) => response.data.drinks);
+};
+
 export const API = {
   fetchIngredients,
   fetchGlasses,
+  fetchCocktails,
 };
