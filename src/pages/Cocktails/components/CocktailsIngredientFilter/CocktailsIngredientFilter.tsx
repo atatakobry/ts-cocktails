@@ -15,6 +15,7 @@ export const CocktailsIngredientFilter: FC<CocktailsIngredientFilterProps> = ({
     <div>
       <label>Choose an ingredient: </label>
       <select value={value} onChange={(e: ChangeEvent<HTMLSelectElement>) => onChange({ ingredient: e.target.value })}>
+        <option value=''>- empty -</option>
         {options.map((option: string) => (
           <option key={option} value={option}>
             {option}

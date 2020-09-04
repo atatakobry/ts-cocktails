@@ -3,6 +3,7 @@ import React, { FC, useContext } from 'react';
 import { API } from '../../../../services/API';
 
 import { TFilterValue, TFiltersValues } from '../../types';
+import { ActionTypes } from '../../actions';
 
 import { CocktailsContext } from '../../Cocktails';
 
@@ -13,13 +14,13 @@ export const CocktailsFilters: FC = () => {
   const { state, dispatch } = useContext(CocktailsContext);
 
   const changeFilterValue = (filterValue: TFilterValue) => {
-    dispatch({ type: 'SET_FILTER_VALUE', payload: filterValue });
+    dispatch({ type: ActionTypes.setFilterValue, payload: filterValue });
   };
 
   const fetchCocktails = (filtersValues: TFiltersValues) => {
     API.fetchCocktails(filtersValues).then((cocktails) =>
       dispatch({
-        type: 'SET_COCKTAILS',
+        type: ActionTypes.setCocktails,
         payload: cocktails,
       })
     );
@@ -40,7 +41,9 @@ export const CocktailsFilters: FC = () => {
       />
 
       <p>
-        <button onClick={() => fetchCocktails(state.filtersValues)}>Get cocktails by ingredient</button>
+        <button disabled={!state.filtersValues.ingredient} onClick={() => fetchCocktails(state.filtersValues)}>
+          Get cocktails by ingredient
+        </button>
       </p>
     </div>
   );
