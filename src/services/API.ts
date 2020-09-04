@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { compact, transform } from 'lodash';
+import { compact, transform, isArray } from 'lodash';
 
 import { TFiltersValues } from '../pages/Cocktails/types';
 
@@ -71,7 +71,7 @@ const fetchCocktails = (filtersValues: TFiltersValues) => {
         'x-rapidapi-key': key,
       },
     })
-    .then((response: IResponse<IDrinks<ICocktail>>) => response.data.drinks);
+    .then((response: IResponse<IDrinks<ICocktail>>) => (isArray(response.data.drinks) ? response.data.drinks : []));
 };
 
 export const API = {
