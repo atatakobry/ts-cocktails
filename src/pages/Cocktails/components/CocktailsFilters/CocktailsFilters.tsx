@@ -8,7 +8,7 @@ import { ActionTypes } from '../../actions';
 import { CocktailsContext } from '../../Cocktails';
 
 import { CocktailsIngredientFilter } from '../CocktailsIngredientFilter/CocktailsIngredientFilter';
-import { CocktailsGlassFilter } from '../CocktailsGlassFilter/CocktailsGlassFilter';
+// import { CocktailsGlassFilter } from '../CocktailsGlassFilter/CocktailsGlassFilter';
 
 export const CocktailsFilters: FC = () => {
   const { state, dispatch } = useContext(CocktailsContext);
@@ -34,11 +34,11 @@ export const CocktailsFilters: FC = () => {
         onChange={changeFilterValue}
       />
 
-      <CocktailsGlassFilter
+      {/* <CocktailsGlassFilter
         options={state.filtersOptions.glasses}
         value={state.filtersValues.glass}
         onChange={changeFilterValue}
-      />
+      /> */}
 
       <p>
         <button disabled={!state.filtersValues.ingredient} onClick={() => fetchCocktails(state.filtersValues)}>

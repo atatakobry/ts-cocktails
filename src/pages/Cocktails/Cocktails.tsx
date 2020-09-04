@@ -21,7 +21,7 @@ export const Cocktails = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchFiltersOptions = () => {
-    Promise.all([API.fetchIngredients(), API.fetchGlasses()]).then(([ingredients, glasses]) =>
+    Promise.all([API.fetchIngredients(), /* API.fetchGlasses() */]).then(([ingredients, glasses]) =>
       dispatch({
         type: ActionTypes.setFilterOptions,
         payload: { ingredients, glasses },
