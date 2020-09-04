@@ -4,17 +4,21 @@ import { TCocktail, TCocktails } from '../../types';
 
 import { CocktailsContext } from '../../Cocktails';
 
+import { CocktailsListItem } from '../CocktailsListItem/CocktailsListItem';
+
+import styles from './CocktailsList.module.scss';
+
 type CocktailsListProps = {
   cocktails: TCocktails;
 };
 
 const CocktailsListView: FC<CocktailsListProps> = ({ cocktails = [] }) => {
   return (
-    <ul>
+    <div className={styles.cocktails}>
       {cocktails.map((cocktail: TCocktail) => (
-        <li key={cocktail.idDrink}>{cocktail.strDrink}</li>
+        <CocktailsListItem key={cocktail.idDrink} cocktail={cocktail} />
       ))}
-    </ul>
+    </div>
   );
 };
 
