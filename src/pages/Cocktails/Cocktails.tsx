@@ -29,9 +29,7 @@ export const Cocktails = () => {
     );
   };
 
-  useEffect(() => {
-    fetchFiltersOptions();
-  }, []);
+  useEffect(fetchFiltersOptions, []);
   // TODO: optimize (use memo or separate contexts)
   return (
     <CocktailsContext.Provider value={{ state, dispatch }}>
