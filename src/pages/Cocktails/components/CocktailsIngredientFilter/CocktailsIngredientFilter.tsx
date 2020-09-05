@@ -1,6 +1,6 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC, HTMLAttributes, ChangeEvent } from 'react';
 
-type CocktailsIngredientFilterProps = {
+type CocktailsIngredientFilterProps = HTMLAttributes<HTMLElement> & {
   options: Array<string>;
   value: string;
   onChange: (filterValue: object) => void;

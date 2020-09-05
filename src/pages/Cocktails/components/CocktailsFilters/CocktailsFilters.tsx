@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, HTMLAttributes, useContext } from 'react';
 
 import { API } from '../../../../services/API';
 
@@ -10,7 +10,7 @@ import { CocktailsContext } from '../../Cocktails';
 import { CocktailsIngredientFilter } from '../CocktailsIngredientFilter/CocktailsIngredientFilter';
 // import { CocktailsGlassFilter } from '../CocktailsGlassFilter/CocktailsGlassFilter';
 
-export const CocktailsFilters: FC = () => {
+export const CocktailsFilters: FC<HTMLAttributes<HTMLElement>> = () => {
   const { state, dispatch } = useContext(CocktailsContext);
 
   const changeFilterValue = (filterValue: TFilterValue) => {

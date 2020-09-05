@@ -2,16 +2,7 @@ import { TInitialState, TAction } from './types';
 import { ActionTypes } from './actions';
 
 export const initialState: TInitialState = {
-  cocktail: {
-    idDrink: '',
-    strDrink: '',
-    strDrinkThumb: '',
-    strCategory: '',
-    strIBA: '',
-    strAlcoholic: '',
-    strGlass: '',
-    strInstructions: '',
-  },
+  cocktail: null,
 };
 
 export const reducer = (state: TInitialState = initialState, action: TAction) => {

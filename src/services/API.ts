@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { compact, transform, pick, isArray } from 'lodash';
+import { compact, transform, pick, first, isArray } from 'lodash';
 
 import { TIdDrink } from '../entities/cocktails/types';
 import { TFiltersValues } from '../pages/Cocktails/types';
@@ -93,11 +93,22 @@ const fetchCocktail = (idDrink: TIdDrink) => {
       },
     })
     .then((response: IResponse<IDrinks<ICocktailDetailed>>) =>
-      pick(
-        response.data.drinks[0],
-        // TODO: get keys with some interface transformer
-        ['idDrink', 'strDrink', 'strDrinkThumb', 'strCategory', 'strIBA', 'strAlcoholic', 'strGlass', 'strInstructions']
-      )
+      isArray(response.data.drinks)
+        ? pick(
+            first(response.data.drinks),
+            // TODO: get keys with some interface transformer
+            [
+              'idDrink',
+              'strDrink',
+              'strDrinkThumb',
+              'strCategory',
+              'strIBA',
+              'strAlcoholic',
+              'strGlass',
+              'strInstructions',
+            ]
+          )
+        : null
     );
 };
 

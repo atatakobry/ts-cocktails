@@ -1,12 +1,12 @@
 export type TIdDrink = string;
 
-export type TCocktail = {
+export type TCocktail = null | {
   idDrink: TIdDrink;
   strDrink: string;
   strDrinkThumb: string;
 };
 
-export type TCocktailDetailed = TCocktail & {
+export type TCocktailDetailed = null | TCocktail & {
   strCategory: string;
   strIBA: string;
   strAlcoholic: string;

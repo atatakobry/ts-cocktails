@@ -9,6 +9,8 @@ import { initialState, reducer } from './reducer';
 
 import { CocktailDetailed } from './components/CocktailDetailed/CocktailDetailed';
 
+import styles from './Cocktail.module.scss';
+
 export const CocktailContext = createContext<{
   state: TInitialState;
   dispatch: (action: TAction) => void;
@@ -35,7 +37,7 @@ export const Cocktail = () => {
   return (
     <CocktailContext.Provider value={{ state, dispatch }}>
       <NavLink to="/cocktails">&larr; Back</NavLink>
-      <CocktailDetailed />
+      <CocktailDetailed className={styles.cocktailDetailed} />
     </CocktailContext.Provider>
   );
 };
