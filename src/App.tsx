@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, NavLink, Switch, Route, Redirect } from 'react-router-dom';
 
-import { Cocktails } from './pages/Cocktails/Cocktails';
 import { Home } from './pages/Home/Home';
+import { Cocktails } from './pages/Cocktails/Cocktails';
+import { Cocktail } from './pages/Cocktail/Cocktail';
 
 import styles from './App.module.scss';
 
@@ -31,8 +32,11 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/cocktails">
+          <Route exact path="/cocktails">
             <Cocktails />
+          </Route>
+          <Route path="/cocktails/:idDrink">
+            <Cocktail />
           </Route>
           <Redirect to="/" />
         </Switch>

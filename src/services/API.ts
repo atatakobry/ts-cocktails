@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { compact, transform, isArray } from 'lodash';
+import { compact, transform, pick, isArray } from 'lodash';
 
+import { TIdDrink } from '../entities/cocktails/types';
 import { TFiltersValues } from '../pages/Cocktails/types';
 
 const host = 'the-cocktail-db.p.rapidapi.com';
@@ -19,10 +20,19 @@ interface IIngredient {
 interface IGlass {
   strGlass: string;
 }
+// TODO: try to unify and connect interfaces/types for equal entities
 interface ICocktail {
   idDrink: string;
   strDrink: string;
   strDrinkThumb: string;
+}
+// TODO: find da way to describe such dynamic fields as `strIngredient1`, `strIngredient2`, etc.
+interface ICocktailDetailed extends ICocktail {
+  strCategory: string;
+  strIBA: string;
+  strAlcoholic: string;
+  strGlass: string;
+  strInstructions: string;
 }
 
 const fetchIngredients = () => {
@@ -74,8 +84,26 @@ const fetchCocktails = (filtersValues: TFiltersValues) => {
     .then((response: IResponse<IDrinks<ICocktail>>) => (isArray(response.data.drinks) ? response.data.drinks : []));
 };
 
+const fetchCocktail = (idDrink: TIdDrink) => {
+  return axios
+    .get(`${url}/lookup.php?i=${idDrink}`, {
+      headers: {
+        'x-rapidapi-host': host,
+        'x-rapidapi-key': key,
+      },
+    })
+    .then((response: IResponse<IDrinks<ICocktailDetailed>>) =>
+      pick(
+        response.data.drinks[0],
+        // TODO: get keys with some interface transformer
+        ['idDrink', 'strDrink', 'strDrinkThumb', 'strCategory', 'strIBA', 'strAlcoholic', 'strGlass', 'strInstructions']
+      )
+    );
+};
+
 export const API = {
   fetchIngredients,
   fetchGlasses,
   fetchCocktails,
+  fetchCocktail,
 };

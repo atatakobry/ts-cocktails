@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
 
-import { TCocktail, TCocktails } from '../../types';
+import { TCocktail, TCocktails } from '../../../../entities/cocktails/types';
 
 import { CocktailsContext } from '../../Cocktails';
 

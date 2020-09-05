@@ -1,3 +1,5 @@
+import { TCocktails } from '../../entities/cocktails/types';
+
 export type TFiltersOptions = {
   ingredients: Array<string>;
   glasses: Array<string>;
@@ -8,15 +10,6 @@ export type TFiltersValues = {
   ingredient: string;
   glass: string;
 };
-
-export type TCocktail = {
-  idDrink: string;
-  strDrink: string;
-  strDrinkThumb: string;
-};
-export type TCocktails = Array<TCocktail>;
-
-// reducer
 
 export type TInitialState = {
   filtersOptions: TFiltersOptions;
