@@ -4,7 +4,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { API } from '../../services/API';
 
 import { TInitialState, TAction } from './types';
-import { ActionTypes } from './actions';
+import { ActionTypes } from './actionTypes';
 import { initialState, reducer } from './reducer';
 
 import { CocktailDetailed } from './components/CocktailDetailed/CocktailDetailed';

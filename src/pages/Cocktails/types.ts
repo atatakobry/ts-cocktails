@@ -6,6 +6,7 @@ export type TFiltersOptions = {
   ingredients: TIngredients;
   glasses: TGlasses;
 };
+
 export type TFilterValue =
   | {
       ingredient: TIngredient;
@@ -24,6 +25,7 @@ export type TInitialState = {
   filtersValues: TFiltersValues;
   cocktails: TCocktails;
 };
+
 export type TAction = {
   type: string;
   payload?: any; // TODO: should be strict?

@@ -1,5 +1,5 @@
 import { TInitialState, TAction } from './types';
-import { ActionTypes } from './actions';
+import { ActionTypes } from './actionTypes';
 
 export const initialState: TInitialState = {
   cocktail: null,

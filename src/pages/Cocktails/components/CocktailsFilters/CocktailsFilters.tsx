@@ -3,7 +3,7 @@ import React, { FC, useContext } from 'react';
 import { API } from '../../../../services/API';
 
 import { TFilterValue, TFiltersValues } from '../../types';
-import { ActionTypes } from '../../actions';
+import { ActionTypes } from '../../actionTypes';
 
 import { CocktailsContext } from '../../Cocktails';
 
