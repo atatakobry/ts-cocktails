@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useContext } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { TCocktail, TCocktails } from '../../../../entities/cocktails/types';
 
@@ -8,7 +8,7 @@ import { CocktailsListItem } from '../CocktailsListItem/CocktailsListItem';
 
 import styles from './CocktailsList.module.scss';
 
-type CocktailsListProps = HTMLAttributes<HTMLElement> & {
+type CocktailsListProps = {
   cocktails: TCocktails;
 };
 
@@ -22,7 +22,7 @@ const CocktailsListView: FC<CocktailsListProps> = ({ cocktails = [] }) => {
   );
 };
 
-export const CocktailsList: FC<HTMLAttributes<HTMLElement>> = () => {
+export const CocktailsList: FC = () => {
   const { state } = useContext(CocktailsContext);
 
   return (

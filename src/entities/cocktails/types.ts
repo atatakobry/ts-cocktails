@@ -6,12 +6,17 @@ export type TCocktail = null | {
   strDrinkThumb: string;
 };
 
-export type TCocktailDetailed = null | TCocktail & {
-  strCategory: string;
-  strIBA: string;
-  strAlcoholic: string;
-  strGlass: string;
-  strInstructions: string;
-};
+export type TCocktailDetailed =
+  | null
+  | (TCocktail & {
+      strCategory: string;
+      strAlcoholic: string;
+      strGlass: string;
+      strInstructions: string;
+      strIngredients: Array<{
+        ingredient: string;
+        measure: string;
+      }>;
+    });
 
 export type TCocktails = Array<TCocktail>;

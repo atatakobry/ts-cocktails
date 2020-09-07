@@ -1,0 +1,42 @@
+.cocktailDetailed {
+  display: flex;
+  align-items: flex-start;
+}
+
+.thumbnail {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+  outline: 1px solid lightgrey;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;;
+}
+
+.type {
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
+}
+
+.glass {
+  font-size: 12px;
+  color: gray;
+}
+
+.ingredients,
+.instructions {
+  margin-top: 10px;
+  font-size: 13px;
+
+  > div {
+    &:first-of-type {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}

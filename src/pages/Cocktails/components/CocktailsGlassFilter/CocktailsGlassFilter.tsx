@@ -1,9 +1,12 @@
-import React, { FC, HTMLAttributes, ChangeEvent } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 
-type CocktailsGlassFilterProps = HTMLAttributes<HTMLElement> & {
-  options: Array<string>;
-  value: string;
-  onChange: (filterValue: object) => void;
+import { TGlass, TGlasses } from '../../../../entities/glasses/types';
+import { TFilterValue } from '../../types';
+
+type CocktailsGlassFilterProps = {
+  options: TGlasses;
+  value: TGlass;
+  onChange: (filterValue: TFilterValue) => void;
 };
 
 export const CocktailsGlassFilter: FC<CocktailsGlassFilterProps> = ({
@@ -14,13 +17,9 @@ export const CocktailsGlassFilter: FC<CocktailsGlassFilterProps> = ({
   return (
     <div>
       <label>Choose a glass: </label>
-      <select
-        value={value}
-        placeholder="ASD"
-        onChange={(e: ChangeEvent<HTMLSelectElement>) => onChange({ glass: e.target.value })}
-      >
+      <select value={value} onChange={(e: ChangeEvent<HTMLSelectElement>) => onChange({ glass: e.target.value })}>
         <option value="">- empty -</option>
-        {options.map((option: string) => (
+        {options.map((option: TGlass) => (
           <option key={option} value={option}>
             {option}
           </option>

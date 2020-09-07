@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useContext } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { API } from '../../../../services/API';
 
@@ -10,14 +10,14 @@ import { CocktailsContext } from '../../Cocktails';
 import { CocktailsIngredientFilter } from '../CocktailsIngredientFilter/CocktailsIngredientFilter';
 // import { CocktailsGlassFilter } from '../CocktailsGlassFilter/CocktailsGlassFilter';
 
-export const CocktailsFilters: FC<HTMLAttributes<HTMLElement>> = () => {
+export const CocktailsFilters: FC = () => {
   const { state, dispatch } = useContext(CocktailsContext);
 
-  const changeFilterValue = (filterValue: TFilterValue) => {
+  const changeFilterValue: (filterValue: TFilterValue) => void = (filterValue) => {
     dispatch({ type: ActionTypes.setFilterValue, payload: filterValue });
   };
 
-  const fetchCocktails = (filtersValues: TFiltersValues) => {
+  const fetchCocktails: (filtersValues: TFiltersValues) => void = (filtersValues) => {
     API.fetchCocktails(filtersValues).then((cocktails) =>
       dispatch({
         type: ActionTypes.setCocktails,

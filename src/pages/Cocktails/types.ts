@@ -1,14 +1,22 @@
+import { TIngredient, TIngredients } from '../../entities/ingredients/types';
+import { TGlass, TGlasses } from '../../entities/glasses/types';
 import { TCocktails } from '../../entities/cocktails/types';
 
 export type TFiltersOptions = {
-  ingredients: Array<string>;
-  glasses: Array<string>;
+  ingredients: TIngredients;
+  glasses: TGlasses;
 };
-// TODO: describe more detailed
-export type TFilterValue = object;
+export type TFilterValue =
+  | {
+      ingredient: TIngredient;
+    }
+  | {
+      glass: TGlass;
+    };
+
 export type TFiltersValues = {
-  ingredient: string;
-  glass: string;
+  ingredient: TIngredient;
+  glass: TGlass;
 };
 
 export type TInitialState = {

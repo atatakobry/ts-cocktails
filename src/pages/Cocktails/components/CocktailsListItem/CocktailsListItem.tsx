@@ -1,11 +1,11 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { TCocktail } from '../../../../entities/cocktails/types';
 
 import styles from './CocktailsListItem.module.scss';
 
-type CocktailsListItemProps = HTMLAttributes<HTMLElement> & {
+type CocktailsListItemProps = {
   cocktail: TCocktail;
 };
 
